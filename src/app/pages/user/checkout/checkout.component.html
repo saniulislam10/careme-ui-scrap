@@ -1,0 +1,290 @@
+<div class="container-mobile">
+<!---cart-header
+<div class="container">
+  <div class="header">
+    <div class="header-main">
+      <div class="header-arrow">
+        <i class="fa fa-arrow-left"></i>
+      </div>
+
+      <div class="header-text">
+        <h3>Checkout</h3>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<!---checkout-step-->
+<div class="checkout-step">
+  <!--step-title-->
+  <div class="step-title">
+    <h3>Checkout (1/3)</h3>
+  </div>
+  <!--step-main-->
+  <div class="indicator-area">
+    <ul>
+      <li  class="active-indicator">
+      
+          <span class='circle-main'>
+              <span class="circle-midle" id="address-circle"></span>
+          </span>
+          <h4>Delivery Address</h4>
+      </li>
+      <li >
+        <span class='circle-main'>
+            <span class="circle-midle" id="address-circle"></span>
+        </span>
+        <h4>Payment</h4>
+    </li>
+    <li>
+      <span class='circle-main'>
+          <span class="circle-midle" id="address-circle"></span>
+      </span>
+      <h4>Order Placed</h4>
+  </li>
+  </ul>
+  </div>
+</div>
+
+<!---delivery-address----->
+<div class="step1" *ngIf="step1 == true">
+<!---step1-title-->
+<div class="step1-title">
+  <h3>Select Delivery Address</h3>
+</div>
+<!--add-new-btn-->
+<div class="add-address-btn">
+  <button><span>+</span> Add New Address</button>
+</div>
+<!--step1-main-->
+<div class="step1-main">
+
+  <!--address-info-->
+  <div class="address-info">
+    <!---address-info-top-->
+    <div class="address-info-top">
+      <div class="address-info-top-left">
+        <h3><i class="fa fa-home"></i> Work</h3>
+        <span>Default</span>
+      </div>
+      <!--address-check-btn-->
+      <div class="address-check-btn">
+        <span><i class="fa fa-check"></i></span>
+      </div>
+    </div>
+    <!---address-info-body-->
+    <div class="address-info-body">
+      <div class="body-top">
+        <h3>Shamim Hossain</h3>
+        <h3>01881325037</h3>
+      </div>
+      <div class="body-bottom">
+        <p>Sonargoan Plaza, Lift-7.</p>
+        <p>51/12 Panthapath signal.Dhanmondi Dhaka</p>
+      </div>
+    </div>
+
+  </div><!--end-->
+   <!--address-info-->
+   <div class="address-info select-address">
+    <!---address-info-top-->
+    <div class="address-info-top">
+      <div class="address-info-top-left">
+        <h3><i class="fa fa-home"></i> Home</h3>
+
+      </div>
+      <!--address-check-btn-->
+      <div class="address-check-btn">
+        <span><i class="fa fa-check"></i></span>
+      </div>
+    </div>
+    <!---address-info-body-->
+    <div class="address-info-body">
+      <div class="body-top">
+        <h3>Shamim Hossain</h3>
+        <h3>01881325037</h3>
+      </div>
+      <div class="body-bottom">
+        <p>Sonargoan Plaza, Lift-7.</p>
+        <p>51/12 Panthapath signal.Dhanmondi Dhaka</p>
+      </div>
+    </div>
+
+  </div><!--end-->
+
+  <!---step1-btn-->
+  <div class="step1-btn">
+    <button (click)="step1Hide()">Continue to Payment</button>
+  </div>
+</div>
+</div><!---delivery-address-end----->
+
+<!------ PAYMENT-AREA ------>
+<div class="step2" *ngIf="step2 == true">
+  <!---step3-title-->
+  <div class="step2-title">
+    <h3>Select Payment Method</h3>
+  </div>
+  <!---online-payment-->
+  <div class="online-payment">
+    <!--method-info-->
+    <div class="method-info">
+       <img src="./assets/images/payments/amex-icon.png" alt="">
+       <span>Paypal</span>
+    </div>
+    <!--method-info-->
+    <div class="method-info">
+      <img src="./assets/images/payments/bkash-icon.png" alt="">
+      <span>Bkash</span>
+   </div>
+   <!--method-info-->
+   <div class="method-info">
+    <img src="./assets/images/payments/mastercard-icon.png" alt="">
+    <span>Stripe</span>
+  </div>
+  <!--method-info-->
+  <div class="method-info">
+    <img src="./assets/images/payments/rocket-icon.png" alt="">
+    <span>Rocket</span>
+  </div>
+  <!--method-info-->
+  <div class="method-info">
+    <img src="./assets/images/payments/visa-icon.png" alt="">
+    <span>Visa Card</span>
+ </div>
+ <!--method-info-->
+ <div class="method-info">
+  <img src="./assets/images/payments/visa-icon.png" alt="">
+  <span>Visa Card</span>
+</div>
+</div>
+
+<!---payment-summary-->
+<div class="payment-summary">
+  <!--summary-title-->
+  <div class="summary-title">
+    <h3>Summary</h3>
+    <span>3 Items</span>
+  </div>
+  <!---summary-point-->
+  <div class="summary-point">
+    <div class="point-info">
+      <span>Total Point:</span>
+    <span>800</span>
+    </div>
+  </div>
+  <!--product-total-->
+  <div class="product-total">
+
+    <!--product-total-title-->
+    <div class="product-total-title">
+      <span>Product</span>
+      <span>Total</span>
+    </div>
+
+  <div class="product-total-info-main">
+      <!--product-total-info-->
+    <div class="product-total-info">
+      <span>2021 Fashin Men's Business Casual Snaker</span>
+      <span>2,340.00</span>
+    </div>
+     <!--product-total-info-->
+     <div class="product-total-info">
+      <span>2021 Fashin Men's Business Casual Snaker</span>
+      <span>2,340.00</span>
+    </div>
+
+    <!---step2-btn-->
+    <div class="step2-btn">
+      <button (click)="step2Hide()">Complete Order</button>
+    </div>
+    <!---subtotal-->
+  <div class="subtotal">
+       <!--product-total-info-->
+    <div class="product-total-info">
+      <span>Subtotal</span>
+      <span>2,340.00</span>
+    </div>
+    <!--product-total-info-->
+    <div class="product-total-info">
+      <span>Points</span>
+      <span>(-) 300</span>
+    </div>
+     <!--product-total-info-->
+     <div class="product-total-info">
+      <span>Tax</span>
+      <span>(-) 300</span>
+    </div>
+     <!--product-total-info-->
+     <div class="product-total-info">
+      <span>Total Shipping</span>
+      <span>50</span>
+    </div>
+     <!--product-total-info-->
+     <div class="product-total-info">
+      <span>Total </span>
+      <span>6150.00</span>
+    </div>
+  </div><!--subtotal-end-->
+    
+
+</div>
+
+</div><!---product-total-end-->
+<!---cuppon-area-->
+<div class="cuppon-area">
+  <div class="cupon-input">
+    <input type="text" name="" id="" placeholder="Have cupon code ? Enter Here..">
+  </div>
+  <!---apply-btn-->
+  <div class="apply-btn">
+    <button>Apply</button>
+  </div>
+</div>
+
+
+</div>
+  
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<!--order-placed-->
+<div class="step3" *ngIf="step3">
+  <!---order-placed-info-->
+  <div class="order-placed-info">
+    <div class="order-check">
+      <span ><i class="fa fa-check"></i></span>
+    </div>
+    <h3>Your Order Placed Successfully!</h3>
+    <p>Congratulations! Your Order has been Placed. You can Track Your Order Number <span>#ORD1234</span></p>
+  </div>
+<!---order-place-button-->
+<div class="order-place-btn">
+  <div class="step3-btn">
+    <button routerLink="/">Continue Shopping</button>
+  </div>
+  <div class="step3-btn">
+    <button class="step3-btn-active">Track Order</button>
+  </div>
+</div>
+</div>
+
+
+
+<!-- <ng-template #noAddress>
+  <h2>No Address Found! Please add an address</h2>
+</ng-template> -->
+
+
+</div>

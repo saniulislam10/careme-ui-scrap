@@ -1,0 +1,176 @@
+<!---cart-header
+<div class="container">
+  <div class="header">
+    <div class="header-main">
+      <div class="header-arrow">
+        <i class="fa fa-arrow-left"></i>
+      </div>
+
+      <div class="header-text">
+        <h3>Shopping Cart</h3>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<!---cart-section1-->
+<div class="container-mobile">
+  <div class="section1">
+    <!---cart-title-->
+    <div class="cart-title">
+      <h2>My Cart</h2>
+    </div>
+    <!---cart-main-area-->
+    <div class="cart-main-area">
+      <!--cart-product-->
+      <div class="cart-product" *ngFor="let data of [1,2,3]">
+        <!---product-img-->
+        <div class="product-img">
+          <img src="./assets/images/junk/1218NP_economicoutlook_img1.jpg" alt="">
+        </div>
+        <!--product-info-->
+        <div class="product-info">
+          <!---product-title-->
+          <div class="product-title">
+            <a href="#">2021 Fashin men's business casual g snaker Fashin men's business cow leatherg</a>
+          </div>
+          <!---product-point-->
+          <div class="product-point">
+            <h3>+10 <i class="fa fa-coins"></i></h3>
+          </div>
+          <!---product-buttom-->
+          <div class="product-bottom">
+            <!---price-->
+            <div class="price">
+              <b>2,340.00</b>
+            </div>
+            <!---product-quatity-->
+            <div class="product-quatity">
+              <!---quatity-->
+              <div class="qutity">
+                <!--mines-->
+                <div class="mines">
+                  <button>-</button>
+                </div>
+                <!--input--->
+                <div class="quantity-input">
+                  <input type="text" name="" value="1">
+                </div>
+                  <!--plus-->
+                  <div class="plus">
+                    <button>+</button>
+                  </div>
+              </div>
+              <!---delete-->
+              <div class="delete">
+                <button><i class="fa fa-trash-alt"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>  <!--cart-product-end-->
+      
+    </div><!---cart-main-area-end-->
+
+    <!---cart-summery-->
+    <div class="cart-summery">
+      <!---subtotal-->
+      <div class="sub-total">
+        <div class="sub-total-left">
+          <span>Subtotal</span>
+        </div>
+        <div class="sub-total-right">
+          <span>6,400.00</span>
+        </div>
+      </div>
+      <!---cart-summery-point-->
+      <div class="point-summery">
+        <div class="cart-summery-point">
+          <!---point-check-->
+          <div class="point-check">
+            <mat-checkbox>Pts(-)</mat-checkbox>
+          </div>
+          <!---summery-point-->
+          <div class="summery-point">
+            <span>300</span>
+          </div>
+        </div>
+        <div class="cart-summery-point">
+          <!---point-check-->
+          <div class="point-check">
+            <mat-checkbox >Pts(+)</mat-checkbox>
+          </div>
+          <!---summery-point-->
+          <div class="summery-point">
+            <span>150</span>
+          </div>
+        </div>
+
+      </div>
+
+       <!---subtotal-->
+       <div class="sub-total" style="border-top: 1px solid #efefef;">
+        <div class="sub-total-left">
+          <span>Total</span>
+        </div>
+        <div class="sub-total-right">
+          <span>6,100.00</span>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <!---cart-button-area-->
+    <div class="cart-button-area">
+      <!---cart-button-left-->
+      <div class="cart-button-left">
+        <span>3 Items</span>
+        <h3>4,740.00 <span>BDT</span></h3>
+      </div>
+      <!--cart-button-->
+      <div class="cart-btn">
+        <button routerLink="/checkout">Continue to shipping</button>
+      </div>
+    </div>
+
+
+
+  </div><!---section1-end-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<!-- <ng-template #cartEmpty>
+  <div class="empty-cart-card">
+    <div class="card-body">
+      <div class=" empty-cart-details">
+        <img src="/assets/images/png/empty-cart.png" class="img-fluid mb-4 mr-3">
+        <h3>Your Cart is Empty</h3>
+        <h4>Add something to make me happy :)</h4>
+        <a routerLink="/" class="btn btn-primary cart-btn-transform m-3" data-abc="true">continue shopping</a>
+      </div>
+    </div>
+  </div>
+</ng-template> -->

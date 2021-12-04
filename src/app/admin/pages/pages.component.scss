@@ -1,0 +1,34 @@
+@import "src/theme/variables";
+// ## SideNav
+mat-sidenav {
+  position: fixed;
+  margin-top: $toolbar-height;
+  width: $mat-sidenav-width;
+  background-color: #17203f;
+}
+.sivenav::-webkit-scrollbar{
+  width: 0px;
+  background-color: transparent;
+}
+mat-sidenav-content{
+  margin-top: $toolbar-height;
+  background-color: #f6f9fd;
+}
+
+.main-content{
+  background-color: #f6f9fd;
+  box-sizing: border-box;
+}
+@media only screen and (max-device-width: 599px) {
+  mat-sidenav-content{
+    margin-top: 65px;
+    min-height: calc(100vh - 65px);
+  }
+  mat-sidenav {
+    margin-top: 65px;
+  }
+
+}
+::ng-deep.mat-drawer-inner-container::-webkit-scrollbar{
+  width: 0px;
+}

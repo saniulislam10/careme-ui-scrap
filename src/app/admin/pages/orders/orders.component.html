@@ -1,0 +1,124 @@
+<div class="order-container">
+<!---order-header-->
+<div class="order-header">
+    <!--order-header-main-->
+    <div class="order-header-main">
+        <div class="order-header-left">
+            <!---order-title-->
+            <div class="order-title">
+                <h3>Request Order</h3>
+            </div>
+        </div>
+        <!---order-header-right-->
+        <div class="order-header-right">
+            <!---order-search-->
+            <div class="order-search">
+                <input type="text" name="" id="" value="" placeholder="Search">
+                <button><i class="fa fa-search"></i></button>
+            </div>
+        <!---order-date-area-->
+        <div class="order-date-area">
+            <ul>
+                <li><button>Date <i class="fa fa-angle-down"></i></button></li>
+                <li><button>More <i class="fa fa-angle-down"></i></button></li>
+            </ul>
+        </div>
+        </div>
+    </div>
+</div><!---order-header-end-->
+
+<!---order-main-area-->
+<div class="order-main-area">
+    <!---order-main-top-->
+    <div class="order-main-top">
+        <ul>
+            <li><button>Payment Status <i class="fa fa-angle-down"></i></button></li>
+            <li><button>Order Status <i class="fa fa-angle-down"></i></button></li>
+            <li><span><i class="fa fa-trash-alt"></i></span></li>
+
+        </ul>
+    </div>
+    <!---order-table-->
+    <div class="order-table">
+        <table>
+            <!---table-head-->
+            <thead>
+                <tr>
+                    <th class="check"><mat-checkbox></mat-checkbox></th>
+                    <th class="id">Request ID</th>
+                    <th class="date">Date & Time</th>
+                    <th class="name">Customer Name</th>
+                    <th class="amount">Amount</th>
+                    <th class="payment-status">Payment Status</th>
+                    <th class="order-status">Order Status</th>
+                    <th class="note">Notes</th>
+                </tr>
+            </thead>
+            <!---table-body-area-->
+            <tbody>
+                <!---data-row-->
+                <tr *ngFor="let data of [1,2,3,4,5,6,7]">
+                    <td class="check">
+                        <mat-checkbox></mat-checkbox>
+                    </td>
+                    <td class="id">
+                        <a href="#">72567</a>
+                    </td>
+                    <td class="date">
+                        <span>Today</span>
+                        <span>12.20 PM</span>
+                    </td>
+                    <td class="name">
+                        <a href="#">Henoy</a>
+                    </td>
+                    <td class="amount">
+                        <span>5.820</span>
+                    </td>
+                    <td  class="payment-status">
+                        <button>Unpaid</button>
+                    </td>
+                    <td class="order-status">
+                        <span>Pending</span>
+                    </td>
+                    <td class="note">
+                        <i class="far fa-file-pdf"></i>
+                    </td>
+                </tr><!---data-row-end-->
+
+            </tbody>    <!---table-body-area-end-->
+
+        </table><!---table-end-->
+
+    </div><!---table-end-->
+
+    <!---table-indicator-->
+    <div class="table-indicator">
+        <span><i class="fa fa-angle-left"></i></span>
+        <span><i class="fa fa-angle-right"></i></span>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<!-- LOADING TEMPLATE 
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>-->
+

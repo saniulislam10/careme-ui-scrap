@@ -1,0 +1,226 @@
+<ngx-spinner></ngx-spinner>
+<!--banner-area-->
+<div class="banner-area">
+    <div class="container-mobile">
+        <div class="banner-main carousel">
+            <swiper [loop]="true" 
+            [autoplay]="{
+              delay: 5000,
+              disableOnInteraction:false
+            }" 
+            [pagination]="{
+              clickable: true
+            }"
+            class="mySwiper"
+          >
+            <ng-template swiperSlide *ngFor="let c of [1,2,3,4,5,6]">
+              <!---banner-img-->
+                <div class="banner-img">
+                    <img src="../../../assets/images/junk/pexels-adrian-dorobantu-2300334.jpg" alt="">
+                </div>
+            </ng-template>
+          </swiper>
+            
+        </div>
+    </div>
+</div>
+
+<!---product-search-area-->
+<div class="product-search">
+  <div class="container-mobile">
+    <!---product-search-top-->
+    <div class="product-search-top">
+      <h3>Quick Order By Any Link</h3>
+      <p>Enter link from any supported site here and order right away.</p>
+    </div>
+    <form [formGroup]="dataForm" (ngSubmit)="onSearch()">
+    <!--product-search-main-->
+    <div class="product-search-main">
+      <div>
+        <select formControlName="selectedSite" name="" id="">
+          <option value="Amazon" >Amazon.com</option>
+          <option value="Aliexpress">Aliexpress</option>
+          <option value="Alibaba">Alibaba</option>
+          <option value="Flipkart">Flipkart</option>
+        </select>
+      </div>
+        <!---input-->
+        <div class="input">
+          <input type="text" matInput formControlName="url" name="url" id="url" placeholder="Paste link or Search from million of products...">
+        </div>
+        <!--product-search-btn-->
+        <div class="product-search-btn">
+          <button type="submit"><i class="fa fa-search"></i></button>
+          <!-- <button (click)="onSearch()"><i class="fa fa-search"></i></button> -->
+        </div>
+    </div>
+    </form>
+
+
+
+
+  </div>
+</div>
+
+<!---section-1-area-->
+<div class="section-1">
+  <div class="container-mobile">
+    <div class="section1-main">
+      <!---title-area-->
+      <div class="title-area">
+        <!---title-->
+        <div class="title">
+          <h3>Category</h3>
+        </div>
+        <!--see-btn-->
+        <div class="see-btn">
+          <a href="#">view all</a>
+        </div>
+      </div>
+      <!---section1-info-area-->
+      <div class="section1-info-area">
+        <!---category-info-->
+        <div class="category-info">
+          <span><i class="fas fa-shoe-prints"></i></span>
+          <h3>Shoe</h3>
+        </div>
+         <!---category-info-->
+         <div class="category-info">
+          <span><i class="fas fa-vest"></i></span>
+          <h3>Fashion</h3>
+        </div>
+         <!---category-info-->
+         <div class="category-info">
+          <span><i class="fa fa-clock"></i></span>
+          <h3>Watch</h3>
+        </div>
+         <!---category-info-->
+         <div class="category-info">
+          <span><i class="fa fa-wallet"></i></span>
+          <h3>Sunglass</h3>
+        </div>
+         <!---category-info-->
+         <div class="category-info">
+          <span><i class="fa fa-wallet"></i></span>
+          <h3>wallet</h3>
+        </div>
+         <!---category-info-->
+         <div class="category-info">
+          <span><i class="fa fa-wallet"></i></span>
+          <h3>belt</h3>
+        </div>
+         <!---category-info-->
+         <div class="category-info">
+          <span><i class="fa fa-wallet"></i></span>
+          <h3>Fitness</h3>
+        </div>
+         <!---category-info-->
+         <div class="category-info">
+          <span><i class="fas fa-gem"></i></span>
+          <h3>Juwelry</h3>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+</div><!---section1-end-->
+
+<!---section-2-area-->
+<div class="section-2">
+  <div class="container-mobile">
+      <!---title-area-->
+      <div class="title-area">
+        <!---title-->
+        <div class="title">
+          <h3>Deal Of The Day</h3>
+        </div>
+        <!--see-btn-->
+        <div class="see-btn">
+          <a href="#">view all</a>
+        </div>
+      </div>
+    <!---section2-main-->
+    <div class="section2-main carousel">
+
+      <swiper [slidesPerView]="1"
+      [breakpoints]="{
+        '0':{
+          slidesPerView:2,
+          spaceBetween: 7
+        },
+        '420': {
+          slidesPerView: 2.4,
+          spaceBetween: 7
+        },
+        '515': {
+          slidesPerView: 3,
+          spaceBetween: 7
+        }
+      }"
+      [pagination]="{
+        clickable: true
+      }"
+      [autoplay]="true"
+      [navigation]="true"
+      class="mySwiper"
+    >
+      <ng-template swiperSlide *ngFor="let data of [1,2,3,4,5,6]">
+        <app-product-card-one></app-product-card-one>
+        </ng-template>
+    </swiper>
+
+    </div>    <!---section2-main-end-->
+
+  </div>
+</div>
+
+<!---section-3-->
+<div class="section-3">
+  <div class="container-mobile">
+  <!---title-area-->
+  <div class="title-area">
+    <!---title-->
+    <div class="title">
+      <h3>Subscription</h3>
+    </div>
+    <!--see-btn-->
+    <div class="see-btn">
+      <a href="#">view all</a>
+    </div>
+  </div>
+
+  <!---section3-main-->
+  <div class="section3-main carousel">
+    <swiper [slidesPerView]="1"
+        [breakpoints]="{
+          '0':{
+            slidesPerView:2,
+            spaceBetween: 7
+          },
+          '420': {
+            slidesPerView: 2.4,
+            spaceBetween: 7
+          },
+          '515': {
+            slidesPerView: 3,
+            spaceBetween: 7
+          }
+        }"
+        [pagination]="{
+          clickable: true
+        }"
+        [autoplay]="true"
+        [navigation]="true"
+        class="mySwiper"
+      >
+      <ng-template swiperSlide *ngFor="let data of [1,2,3,4,5,6]">
+        <app-product-card-two></app-product-card-two>
+      </ng-template>
+  </swiper>
+  </div><!---section3-main-end-->
+
+
+  </div>
+</div>

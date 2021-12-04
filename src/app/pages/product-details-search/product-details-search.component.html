@@ -1,0 +1,245 @@
+<!----product-details-area-->
+<div class="product-details-area">
+  <div class="container-mobile">
+    <!---product-details-main-->
+    <div class="product-details-main">
+      <!---product-img-slide-area-->
+      <div class="carousel">
+        <swiper [loop]="true" [autoplay]="{
+              delay: 5000,
+              disableOnInteraction:false
+            }" [pagination]="{
+              clickable: true
+            }" class="mySwiper">
+          <ng-template swiperSlide *ngFor="let images of data.images">
+            <div class="product-img">
+              <img [src]="images" alt="">
+            </div>
+          </ng-template>
+        </swiper>
+      </div>
+      <!---produt-title-area-->
+      <div class="product-title-area">
+        <a>{{data.title}}</a>
+
+        <!---product-rating-area-->
+        <div *ngIf="data.ratings" class="product-rating-area">
+          <!-- <div class="rating">
+            <ul>
+              <li><i class="fa fa-star"></i></li>
+              <li><i class="fa fa-star"></i></li>
+              <li><i class="fa fa-star"></i></li>
+              <li><i class="fa fa-star"></i></li>
+              <li><i class="fa fa-star"></i></li>
+            </ul>
+          </div> -->
+          <!---rating-text-->
+          <div  class="rating-text">
+            <h3><a>{{data.ratings.averageStar}} out of {{data.ratings.totalStar}}</a> | <a>{{data.ratings.totalStartCount}} Total Ratings</a> <span> | </span> <a>{{data.feedback.length}} reviews</a></h3>
+          </div>
+        </div>
+
+      </div>
+
+      <!----product-details-midle-info-->
+      <div class="product-details-midle-info">
+        <!---product-price-info-->
+        <div class="product-price-info">
+          <!---price-->
+          <div class="price-area">
+            <!--main-price-->
+            <div class="main-price">
+              <h3 *ngIf="data.price">{{data.price}}</h3>
+              <h3 *ngIf="data.salePrice">{{data.salePrice.min}}BDT ~ {{data.salePrice.max}}BDT</h3>
+            </div>
+          </div>
+          <!--stock-area-->
+          <div *ngIf="data.totalAvailableQuantity" class="stock-badge">
+            <span>Stock : {{data.totalAvailableQuantity}}</span>
+          </div>
+        </div>
+        <!---price-end-->
+        <!---coin-info-->
+        <div class="coin-info">
+          <ul>
+            <li>Pay 800 TK + Earn 500</li>
+            <li>Pay 1200 TK + Earn 500</li>
+          </ul>
+        </div>
+        <!---coin-end-->
+        <!---product-quntity-size-info-->
+        
+        <div *ngIf="data.variants" class="product-quantity-size-info-main">
+          <!---size-info-->
+          <div *ngFor="let variant of data.variants.options" class="product-quantity-size-info">
+            <!--left-->
+            <div >
+              <div class="product-quantity-size-info-left">
+                <span>{{variant.name}}</span>
+              </div>
+              <!--right-->
+              <div class="product-info-right">
+                <ul class="quantity">
+                  <li *ngFor="let option of variant.values">
+                    <button type="button" value="{{option.displayName}}" (click)="setValue(option.displayName, variant)">{{option.displayName}}</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!---end-->
+        </div>
+
+          <!---quantity-info-->
+          <div class="product-quantity-size-info">
+            <!--left-->
+            <div class="product-quantity-size-info-left">
+              <span>Quantity:</span>
+            </div>
+            <!--right-->
+            <div class="product-quantity-size-info-right">
+              <ul class="quantity">
+                <li><button type="button" id="mine">-</button></li>
+                <li><input type="button" type="text" value="1"></li>
+                <li><button type="button" id="plus">+</button></li>
+              </ul>
+            </div>
+          </div>
+          <!---end-->
+
+
+
+
+      </div>
+      <!---midle-end-->
+
+      <!---product-cart-btn-->
+      <div class="product-btn">
+        <button [class]="btnActive?'inactive-btn':'active-btn'" (click)="requestOrder(data)" type="button">Request Order</button>
+        <!-- <button [class]="btnActive?'active-btn':'inactive-btn'" routerLink="/cart" (click)="activeCartBtn()" type="button">Add to Cart</button> -->
+      </div>
+
+      <!---product-bottom-info-->
+      <div class="product-bottom-info">
+        <div *ngIf="data.aboutThis">
+          <!---product-description-->
+          <div class="product-bottom-details">
+            <!---togle-btn-->
+
+            <div class="toggle-btn">
+              <mat-expansion-panel class="toggle-btn-active" [expanded]="true">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Description
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>{{data.description}}</p>
+              </mat-expansion-panel>
+            </div>
+
+          </div>
+        </div>
+
+        <!---product-description-->
+        <div class="product-bottom-details">
+          <!---togle-btn-->
+
+          <div class="toggle-btn">
+            <mat-expansion-panel class="toggle-btn-active" [expanded]="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Specification
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div *ngIf="data.aboutThis">
+                <div *ngFor="let specs of data.aboutThis">
+                  <li>{{specs}}</li>
+                </div>
+              </div>
+              <div *ngIf="data.specs">
+                <div *ngFor="let specs of data.specs">
+                  <li>{{specs.attrName}} : {{specs.attrValue}}</li>
+                </div>
+              </div>
+            </mat-expansion-panel>
+
+          </div>
+        </div>
+
+        <!---product-description-->
+        <div *ngIf="data.feedback" class="product-bottom-details">
+          <!---togle-btn-->
+
+          <div class="toggle-btn">
+            <mat-expansion-panel class="toggle-btn-active" opened>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Reviews
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div *ngFor="let reviews of data.feedback">
+                <div id="reviews">
+                  <p>Name : {{reviews.displayName}}</p>
+                  <p>Review : {{reviews.content}}</p>
+                </div>
+              </div>
+            </mat-expansion-panel>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+<section class="section-2">
+  <div class="container-mobile">
+
+    <div class="title-area">
+      <!---title-->
+      <div class="title">
+        <h3>Related Products</h3>
+      </div>
+      <!--see-btn-->
+      <div class="see-btn">
+        <a href="#">view all</a>
+      </div>
+    </div>
+
+    <div class="section2-main carousel">
+      <swiper [slidesPerView]="1" [breakpoints]="{
+        '0':{
+          slidesPerView:2,
+          spaceBetween: 7
+        },
+        '420': {
+          slidesPerView: 2.4,
+          spaceBetween: 7
+        },
+        '515': {
+          slidesPerView: 3,
+          spaceBetween: 7
+        }
+      }" [pagination]="{
+        clickable: true
+      }" [autoplay]="true" [navigation]="true" class="mySwiper">
+        <ng-template swiperSlide *ngFor="let data of [1,2,3,4,5,6]">
+          <app-product-card-one></app-product-card-one>
+        </ng-template>
+      </swiper>
+    </div>
+
+
+  </div>
+</section>
+<!--END RECOMMENDED SECTION VIEW-->
+
+
+
+<!-- LOADING TEMPLATE -->
+<!-- <ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner> -->
