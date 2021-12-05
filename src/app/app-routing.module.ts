@@ -9,12 +9,12 @@ const routes: Routes = [
   // ADMIN
   {
     path: environment.adminLoginUrl,
-    // canActivate: [AdminAuthStateGuard],
+    canActivate: [AdminAuthStateGuard],
     loadChildren: () => import('./admin/admin-auth/admin-auth.module').then(m => m.AdminAuthModule)
   },
   {
     path: environment.adminBaseUrl,
-    // canActivate: [AdminAuthGuard],
+    canActivate: [AdminAuthGuard],
     loadChildren: () => import('./admin/pages/pages.module').then(m => m.PagesModule)
   },
   {

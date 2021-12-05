@@ -45,34 +45,33 @@
             <thead>
                 <tr>
                     <th class="check"><mat-checkbox></mat-checkbox></th>
-                    <th class="id">Request ID</th>
+                    <th class="id">Link</th>
                     <th class="date">Date & Time</th>
-                    <th class="name">Customer Name</th>
+                    <th class="name">Order Item Name</th>
                     <th class="amount">Amount</th>
                     <th class="payment-status">Payment Status</th>
                     <th class="order-status">Order Status</th>
-                    <th class="note">Notes</th>
+                    <th class="note">Actions</th>
                 </tr>
             </thead>
             <!---table-body-area-->
             <tbody>
                 <!---data-row-->
-                <tr *ngFor="let data of [1,2,3,4,5,6,7]">
+                <tr *ngFor="let data of order">
                     <td class="check">
                         <mat-checkbox></mat-checkbox>
                     </td>
                     <td class="id">
-                        <a href="#">72567</a>
+                        <a href="{{data.link}}">Click Here</a>
                     </td>
                     <td class="date">
-                        <span>Today</span>
-                        <span>12.20 PM</span>
+                        <span>{{data.createdAt}}</span>
                     </td>
                     <td class="name">
-                        <a href="#">Henoy</a>
+                        <a [routerLink]="['/admin/order-details/' + data._id ]">{{data.title}}</a>
                     </td>
                     <td class="amount">
-                        <span>5.820</span>
+                        <span>{{data.price*data.quantity}}</span>
                     </td>
                     <td  class="payment-status">
                         <button>Unpaid</button>
@@ -81,7 +80,7 @@
                         <span>Pending</span>
                     </td>
                     <td class="note">
-                        <i class="far fa-file-pdf"></i>
+                        <a [routerLink]="['/admin/order-details/' + data._id ]">View</a>
                     </td>
                 </tr><!---data-row-end-->
 
@@ -118,7 +117,7 @@
 </div>
 
 
-<!-- LOADING TEMPLATE 
+<!-- LOADING TEMPLATE
 <ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
              type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>-->
 

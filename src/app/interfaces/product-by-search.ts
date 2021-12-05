@@ -12,7 +12,9 @@ export interface ProductBySearch {
     variants? : any,
     ratings?: any,
     link?: String,
-    color?: String,  
-    size?: String,
+    firstVariant?: String,
+    secondVariant?: String,
+    thirdVariant?: String,
+    fourthVariant?: String,
     quantity: Number,
 }

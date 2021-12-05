@@ -35,6 +35,9 @@ export class SearchService {
   public getAllOrders(){
     return this.httpClient.get<{ data: ProductBySearch, message?: string }>(API_SEARCH + 'get-all-orders');
   }
+  public getOrderById(id){
+    return this.httpClient.get<{ data: ProductBySearch, message?: string }>(API_SEARCH + 'get-order-by-id/' + id);
+  }
 
   public getSearchProduct() {
     return this.product;

@@ -96,12 +96,16 @@ export class ProductDetailsSearchComponent implements OnInit, OnDestroy {
   user: User = null;
 
   // variation
-  size: String;
-  color: String;
-  sizeId: string;
-  colorId: string;
+  firstId: string;
+  firstValue: string;
+  secondId: string;
+  secondValue: string;
+  thirdId: string;
+  thirdValue: string;
+  fourthId: string;
+  fourthValue: string;
   priceId: string;
-  priceById: Number; 
+  priceById: Number;
 
   data: ProductBySearch;
 
@@ -572,21 +576,44 @@ export class ProductDetailsSearchComponent implements OnInit, OnDestroy {
     this.btnActive = true;
   }
   setValue(val, id, variant){
-    if(variant.name==='Color'){
-      this.color = val;
-      this.colorId = id;
+    if(variant.name===this.data.variants.options[0].name){
+      this.firstValue = val;
+      this.firstId = id;
       console.log(variant);
-      console.log("Color :", this.color);
+      console.log("First Variant : ", this.firstValue);
     }
-    else{
-      this.size = val;
-      this.sizeId = id;
+    else if(variant.name===this.data.variants.options[1].name){
+      this.secondValue = val;
+      this.secondId = id;
       console.log(variant);
-      console.log("Size :", this.size);
+      console.log("Second Variant : ", this.secondValue);
     }
-    this.priceId = this.colorId + ',' + this.sizeId;
+    else if(variant.name===this.data.variants.options[2].name){
+      this.thirdValue = val;
+      this.thirdId = id;
+      console.log(variant);
+      console.log("Second Variant : ", this.thirdValue);
+    }
+    else if(variant.name===this.data.variants.options[3].name){
+      this.fourthValue = val;
+      this.fourthId = id;
+      console.log(variant);
+      console.log("Second Variant : ", this.fourthValue);
+    }
+    if(this.data.variants.options.length === 1){
+      this.priceId = this.firstId
+    }
+    else if(this.data.variants.options.length === 2){
+      this.priceId = this.firstId + ',' + this.secondId;
+    }
+    else if(this.data.variants.options.length === 3){
+      this.priceId = this.firstId + ',' + this.secondId + ',' + this.thirdId;
+    }
+    else if(this.data.variants.options.length === 4){
+      this.priceId = this.firstId + ',' + this.secondId + ',' + this.thirdId + ',' + this.fourthId;
+    }
     console.log(this.priceId);
-    if(this.colorId && this.sizeId){
+    if(this.firstId && this.secondId){
       let array = this.data.variants.prices
       console.log(this.data.variants.prices);
       let item = array.find(i => i.optionValueIds === this.priceId);
@@ -598,8 +625,10 @@ export class ProductDetailsSearchComponent implements OnInit, OnDestroy {
     let message;
     let link = this.searchService.getSearchLink();
     product.link=link;
-    product.color= this.color;
-    product.size= this.size;
+    product.firstVariant= this.firstValue;
+    product.secondVariant= this.secondValue;
+    product.thirdVariant= this.thirdValue;
+    product.fourthVariant= this.fourthValue;
     product.quantity= this.selectedQty;
     if(!this.data.price){
       product.price= this.priceById;

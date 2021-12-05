@@ -139,11 +139,11 @@ const routes: Routes = [
       },
       {
         path: 'orders',
-        canActivate: [CheckAuthAccessGuard, EditorAuthRoleGuard],
+        // canActivate: [CheckAuthAccessGuard, EditorAuthRoleGuard],
         loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule)
       },
       {
-        path:"order-details",
+        path:"order-details/:id",
         loadChildren: () => import('./order-details/order-details.module').then(m => m.OrderDetailsModule)
       },
       {

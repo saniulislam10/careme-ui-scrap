@@ -16,6 +16,8 @@ import {UpdateOrderStatusComponent} from './update-order-status/update-order-sta
 import {ReloadService} from '../../../services/reload.service';
 import * as XLSX from 'xlsx';
 import {OrderStatusPipe} from '../../../shared/pipes/order-status.pipe';
+import { ProductBySearch } from 'src/app/interfaces/product-by-search';
+import { SearchService } from 'src/app/services/search.service';
 
 export interface OrderFilter {
   deliveryStatus?: number;
@@ -29,6 +31,8 @@ export interface OrderFilter {
   providers: [OrderStatusPipe]
 })
 export class OrdersComponent implements OnInit, OnDestroy {
+
+  order : ProductBySearch;
 
 
   private subAcRoute: Subscription;
@@ -87,22 +91,34 @@ export class OrdersComponent implements OnInit, OnDestroy {
     private utilsService: UtilsService,
     private reloadService: ReloadService,
     private orderStatusPipe: OrderStatusPipe,
+    private searchService: SearchService,
   ) {
   }
 
   ngOnInit(): void {
     this.reloadService.refreshOrder$
       .subscribe(() => {
-        this.getAllOrdersByAdmin();
+        this.getOrderList();
       });
-    this.subAcRoute = this.activatedRoute.queryParams.subscribe(qParam => {
-      if (qParam && qParam.page) {
-        this.currentPage = qParam.page;
-      } else {
-        this.currentPage = 1;
-      }
-      this.getAllOrdersByAdmin();
-    });
+
+      this.getOrderList();
+    // this.subAcRoute = this.activatedRoute.queryParams.subscribe(qParam => {
+    //   if (qParam && qParam.page) {
+    //     this.currentPage = qParam.page;
+    //   } else {
+    //     this.currentPage = 1;
+    //   }
+    //   this.getAllOrdersByAdmin();
+    // });
+  }
+
+  getOrderList(){
+    console.log("Order Details");
+    this.searchService.getAllOrders()
+    .subscribe(res=>{
+      this.order=res.data;
+      console.log(this.orders);
+    })
   }
 
   private getAllOrdersByAdmin() {

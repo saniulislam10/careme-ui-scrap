@@ -9,15 +9,14 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import { UpdateOrderStatusComponent } from './update-order-status/update-order-status.component';
 import {PipesModule} from '../../../shared/pipes/pipes.module';
-import { OrderDetailsComponent } from './order-details/order-details.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { OrderDetailsComponent } from '../order-details/order-details.component';
 
 
 @NgModule({
   declarations: [
     OrdersComponent,
-    UpdateOrderStatusComponent,
-    OrderDetailsComponent
+    UpdateOrderStatusComponent
   ],
   imports: [
     CommonModule,

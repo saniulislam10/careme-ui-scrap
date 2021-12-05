@@ -43,11 +43,11 @@ const routes: Routes = [
         path: 'product-details-search',
         loadChildren: () => import('./product-details-search/product-details-search.module').then(m => m.ProductDetailsSearchModule),
       },
-       // {
-      //   path: 'product-details/:slug',
-      //   loadChildren: () => import('./product-details/product-details.module').then(m => m.ProductDetailsModule),
-      //   data: {preload: true, delay: false}
-      // },
+       {
+        path: 'product-details/:slug',
+        loadChildren: () => import('./product-details/product-details.module').then(m => m.ProductDetailsModule),
+        data: {preload: true, delay: false}
+      },
       {
         path: 'offers',
         loadChildren: () => import('./offer-view/offer-view.module').then(m => m.OfferViewModule),
