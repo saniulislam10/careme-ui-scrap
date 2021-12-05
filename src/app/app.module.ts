@@ -18,7 +18,6 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {CookieService} from 'ngx-cookie-service';
 import {FacebookModule} from 'ngx-facebook';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
