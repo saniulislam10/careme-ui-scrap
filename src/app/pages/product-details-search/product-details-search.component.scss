@@ -3,7 +3,28 @@
 @import'../../../theme/swipper.scss';
 @import "src/theme/variables";
 
-.product-info-right li button {
+.product-info-right li button{
+    padding: 10px;
+    margin: 10px 10px 10px 0;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    border: 1px solid #a8a8a8;
+    background-color: #fff;
+    outline: none;
+    font-family: $font-en-primary;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s linear; 
+}
+.product-info-right li button:focus{
+    background-color: aqua;
+}
+#quantity{
     padding: 10px;
     margin: 10px 10px 10px 0;
     width: auto;

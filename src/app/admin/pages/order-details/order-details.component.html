@@ -42,35 +42,43 @@
                 <thead>
                     <tr>
                         <th class="check"></th>
-                        <th class="si">SI</th>
+                        <th class="link">Link</th>
                         <th class="item">Item Name</th>
                         <th class="price">Unit Price</th>
                         <th class="quantity">Quantity</th>
                         <th class="amount">Amount</th>
+                        <th class="color">Color</th>
+                        <th class="size">Size</th>
                         <th class="order-status"></th>
                     </tr>
                 </thead>
                 <!---table-body-area-->
                 <tbody>
                     <!---data-row-->
-                    <tr>
+                    <tr *ngFor="let order of orders">
                         <td class="check">
                             <mat-checkbox></mat-checkbox>
                         </td>
-                        <td  class="si">
-                           <span>01</span>
+                        <td class="link">
+                           <a href="{{order.link}}">#</a>
                         </td>
                         <td class="item">
-                           <a href="#">2021 Fashin men's business casual</a>
+                           <a>{{order.title}}</a>
                         </td>
                         <td class="price">
-                            <span>2.820</span>
+                            <span *ngIf="order.price">{{order.price}}</span>
                         </td>
                         <td class="quantity">
-                            <a href="#">03</a>
+                            <a>{{order.quantity}}</a>
                         </td>
                         <td class="amount">
-                            <span>5.820</span>
+                            <span>{{order.price * order.quantity}}</span>
+                        </td>
+                        <td class="color">
+                            <span>{{order.color}}</span>
+                        </td>
+                        <td class="size">
+                            <span>{{order.size}}</span>
                         </td>
                         <td class="order-status">
                             <span>Pending</span>

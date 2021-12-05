@@ -30,6 +30,8 @@ import { ProductBySearch } from 'src/app/interfaces/product-by-search';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from "ngx-spinner";
 import { ActivatedRoute, Router } from '@angular/router';
+import { UiService } from 'src/app/services/ui.service';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -49,7 +51,7 @@ export class HomeComponent implements OnInit {
   // search
   public dataForm: FormGroup;
   url: any;
-  amazonProduct: ProductBySearch;
+  searchProduct: ProductBySearch;
 
 
   brandList: any[] = [];
@@ -105,7 +107,8 @@ export class HomeComponent implements OnInit {
     private fb: FormBuilder,
     private spinner: NgxSpinnerService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private uiService: UiService
   ) {
 
     this.updateMetaData();
@@ -278,36 +281,46 @@ export class HomeComponent implements OnInit {
       this.searchService.setProductType(search.selectedSite);
       await this.getAmazonProduct(link);
     }
-    
+
     else if (search.selectedSite === 'Aliexpress') {
       this.searchService.setProductType(search.selectedSite);
       await this.getAliexpressProduct(link);
     }
   }
-  
+
   getAmazonProduct(link) {
-    
     this.searchService.getProductFromAmazon(link)
-    .subscribe(res => {
-      this.amazonProduct = res.data;
-      console.log(this.amazonProduct);
-      this.searchService.setSearchLink(link);
-      this.searchService.setSearchProduct(this.amazonProduct);
-      this.router.navigateByUrl('/product-details-search');
-      this.spinner.hide();
-    })
-  }
-  getAliexpressProduct(link) {
-    
-    this.searchService.getProductFromAliexpress(link)
-    .subscribe(res => {
-      this.amazonProduct = res.data;
-      console.log(this.amazonProduct);
-      this.searchService.setSearchLink(link);
-      this.searchService.setSearchProduct(this.amazonProduct);
-      this.router.navigateByUrl('/product-details-search');
-      this.spinner.hide();
-      })
+      .subscribe(
+        res => {
+          this.searchProduct = res.data;
+          console.log(this.searchProduct);
+          this.searchService.setSearchLink(link);
+          this.searchService.setSearchProduct(this.searchProduct);
+          this.router.navigateByUrl('/product-details-search');
+          this.spinner.hide();
+        },
+        err => {
+          this.spinner.hide();
+        }
+      )
   }
 
+  getAliexpressProduct(link) {
+    this.searchService.getProductFromAliexpress(link)
+      .subscribe(
+        res => {
+          console.log(res.success);
+          this.searchProduct = res.data;
+          console.log(this.searchProduct);
+          this.searchService.setSearchLink(link);
+          this.searchService.setSearchProduct(this.searchProduct);
+          this.router.navigateByUrl('/product-details-search');
+          this.spinner.hide();
+        }, err => {
+          this.spinner.hide();
+        }
+      )
+  };
+
 }
+

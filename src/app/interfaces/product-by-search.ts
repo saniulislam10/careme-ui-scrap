@@ -1,7 +1,7 @@
 export interface ProductBySearch {
     _id? : any,
     title : string,
-    price? : string,
+    price? : Number,
     images : string,
     aboutThis ?: any,
     description ?: string,
@@ -13,5 +13,6 @@ export interface ProductBySearch {
     ratings?: any,
     link?: String,
     color?: String,  
-    size?: String
+    size?: String,
+    quantity: Number,
 }

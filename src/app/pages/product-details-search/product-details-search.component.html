@@ -35,7 +35,7 @@
           </div> -->
           <!---rating-text-->
           <div  class="rating-text">
-            <h3><a>{{data.ratings.averageStar}} out of {{data.ratings.totalStar}}</a> | <a>{{data.ratings.totalStartCount}} Total Ratings</a> <span> | </span> <a>{{data.feedback.length}} reviews</a></h3>
+            <h3><a>{{data.ratings.averageStar}} out of {{data.ratings.totalStar}}</a> | <a>{{data.ratings.totalStartCount}} Total Ratings</a> <span> | </span> <a>Showing {{data.feedback.length}} reviews</a></h3>
           </div>
         </div>
 
@@ -49,8 +49,9 @@
           <div class="price-area">
             <!--main-price-->
             <div class="main-price">
-              <h3 *ngIf="data.price">{{data.price}}</h3>
-              <h3 *ngIf="data.salePrice">{{data.salePrice.min}}BDT ~ {{data.salePrice.max}}BDT</h3>
+              <h3 *ngIf="priceById == null && data.price">{{data.price * selectedQty}}BDT</h3>
+              <h3 *ngIf="priceById != null">{{priceById * selectedQty}}BDT</h3>
+              <h3 *ngIf="priceById == null && data.salePrice">{{data.salePrice.min * selectedQty}}BDT ~ {{data.salePrice.max * selectedQty}}BDT</h3>
             </div>
           </div>
           <!--stock-area-->
@@ -81,7 +82,7 @@
               <div class="product-info-right">
                 <ul class="quantity">
                   <li *ngFor="let option of variant.values">
-                    <button type="button" value="{{option.displayName}}" (click)="setValue(option.displayName, variant)">{{option.displayName}}</button>
+                    <button type="button" value="{{option.displayName}}" (click)="setValue(option.displayName, option.id, variant)">{{option.displayName}}</button>
                   </li>
                 </ul>
               </div>
@@ -99,9 +100,9 @@
             <!--right-->
             <div class="product-quantity-size-info-right">
               <ul class="quantity">
-                <li><button type="button" id="mine">-</button></li>
-                <li><input type="button" type="text" value="1"></li>
-                <li><button type="button" id="plus">+</button></li>
+                <li><button type="button" id="mine" (click)="decrementQty()">-</button></li>
+                <li><p id="quantity">{{selectedQty}}</p></li>
+                <li><button type="button" id="plus" (click)="incrementQty()">+</button></li>
               </ul>
             </div>
           </div>

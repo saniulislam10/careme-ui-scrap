@@ -98,6 +98,10 @@ export class ProductDetailsSearchComponent implements OnInit, OnDestroy {
   // variation
   size: String;
   color: String;
+  sizeId: string;
+  colorId: string;
+  priceId: string;
+  priceById: Number; 
 
   data: ProductBySearch;
 
@@ -567,16 +571,27 @@ export class ProductDetailsSearchComponent implements OnInit, OnDestroy {
   activeCartBtn(){
     this.btnActive = true;
   }
-  setValue(val, variant){
+  setValue(val, id, variant){
     if(variant.name==='Color'){
       this.color = val;
+      this.colorId = id;
       console.log(variant);
       console.log("Color :", this.color);
     }
     else{
       this.size = val;
+      this.sizeId = id;
       console.log(variant);
-      console.log("Size :",this.size);
+      console.log("Size :", this.size);
+    }
+    this.priceId = this.colorId + ',' + this.sizeId;
+    console.log(this.priceId);
+    if(this.colorId && this.sizeId){
+      let array = this.data.variants.prices
+      console.log(this.data.variants.prices);
+      let item = array.find(i => i.optionValueIds === this.priceId);
+      console.log(item.salePrice)
+      this.priceById = item.salePrice;
     }
   }
   requestOrder(product: ProductBySearch){
@@ -585,6 +600,10 @@ export class ProductDetailsSearchComponent implements OnInit, OnDestroy {
     product.link=link;
     product.color= this.color;
     product.size= this.size;
+    product.quantity= this.selectedQty;
+    if(!this.data.price){
+      product.price= this.priceById;
+    }
     this.searchService.postOrder(product)
     .subscribe( req => {
       message = req.message;
